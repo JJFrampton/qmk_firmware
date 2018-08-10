@@ -8,7 +8,6 @@ extern keymap_config_t keymap_config;
 #define _SYMBOLS 1
 #define _MOVEMENT 2
 #define _NUMPAD 3
-#define _ADJUST 16
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -26,23 +25,23 @@ enum custom_keycodes {
 #define KC_CPYP LGUI(LSFT(LCTL(KC_4)))  // Copy portion of screen
 
 /* Custom mod layers: */
-#define KC_M1 SYMBOLS
-#define KC_M2 MOVEMENT
-#define KC_M3 NUMPAD
-#define KC_M4 SPC
-#define KC_M5 SPC
+#define KC_M1 MO(_SYMBOLS)
+#define KC_M2 MO(_MOVEMENT)
+#define KC_M3 MO(_NUMPAD)
+#define KC_M4 KC_SPC
+#define KC_M5 KC_SPC
 /* Mod layer shifters */
-#define KC_SFTD
-#define KC_SFTU
+#define KC_SFTD KC_SPC
+#define KC_SFTU KC_SPC
 
-#define KC_CLPR LSFT(9)
-#define KC_CRPR LSFT(0)
-#define KC_CLCB LSFT(LBRC)
-#define KC_CRCB LSFT(RBRC)
-#define KC_CLSQ LBRC
-#define KC_CRSQ RBRC
-#define KC_CLAB LSFT(COMM)
-#define KC_CRAB LSFT(DOT)
+#define KC_CLPR LSFT(KC_9)
+#define KC_CRPR LSFT(KC_0)
+#define KC_CLCB LSFT(KC_LBRC)
+#define KC_CRCB LSFT(KC_RBRC)
+#define KC_CLSQ KC_LBRC
+#define KC_CRSQ KC_RBRC
+#define KC_CLAB LSFT(KC_COMM)
+#define KC_CRAB LSFT(KC_DOT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -72,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOVEMENT] = LAYOUT_kc(
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
-      1  , 2  , 3  , 4  , 5  , 6  ,      7  , 8  , 9  , 0  ,MINS,EQL 
+      1  , 2  , 3  , 4  , 5  , 6  ,      7  , 8  , 9  , 0  ,MINS,EQL ,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     GRAV,BTN1,MS_L,MS_U,MS_D,MS_R,     RGHT,DOWN, UP ,LEFT,SCLN,BSLS,
+     GRV ,BTN1,MS_L,MS_U,MS_D,MS_R,     RGHT,DOWN, UP ,LEFT,SCLN,BSLS,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT,BTN2,WH_L,WH_U,WH_D,WH_R,     HOME,PGDN,PGUP,END ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
@@ -84,60 +83,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUMPAD] = LAYOUT_kc(
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
-     GRV , Q  , W  , E  , R  , T  ,      Y  , 7  , 8  , 9  ,PMNS,PSLS,
+     GRV , Q  , W  , E  , R  , T  ,      7  , 8  , 9  ,PMNS,PSLS,BSPC,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     ESC , A  , S  , D  , F  , G  ,      H  , 4  , 5  , 6  ,PPLS,PAST,
+     ESC , A  , S  , D  , F  , G  ,      4  , 5  , 6  ,PPLS,PAST,PAST,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LSFT, Z  , X  , C  , V  , B  ,      N  , 1  , 2  , 3  ,ENT ,BSLS,
+     LSFT, Z  , X  , C  , V  , B  ,      1  , 2  , 3  ,ENT ,BSLS,BSLS,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M1 , M2 , M3 ,     SPC , 0  , 0  ,DOT ,ENT ,EQL
+     LCTL,LALT,LGUI, M1 , M2 , M3 ,      0  , 0  ,DOT ,ENT ,EQL ,EQL
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   )
 };
 
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
+/* void persistent_default_layer_set(uint16_t default_layer) { */
+/*   eeconfig_update_default_layer(default_layer); */
+/*   default_layer_set(default_layer); */
+/* } */
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case QWERTY:
-      if (record->event.pressed) {
-        #ifdef AUDIO_ENABLE
-          PLAY_SONG(tone_qwerty);
-        #endif
-        persistent_default_layer_set(1UL<<_QWERTY);
-      }
-      return false;
-      break;
+    /* case QWERTY: */
+    /*   if (record->event.pressed) { */
+    /*     persistent_default_layer_set(1UL<<_QWERTY); */
+    /*   } */
+    /*   return false; */
+    /*   break; */
     case SYMBOLS:
       if (record->event.pressed) {
         layer_on(_SYMBOLS);
-        update_tri_layer(_SYMBOLS, _CODE, _ADJUST);
       } else {
         layer_off(_SYMBOLS);
-        update_tri_layer(_SYMBOLS, _CODE, _ADJUST);
       }
       return false;
       break;
     case MOVEMENT:
       if (record->event.pressed) {
         layer_on(_MOVEMENT);
-        update_tri_layer(_MOVEMENT, _CODE, _ADJUST);
       } else {
         layer_off(_MOVEMENT);
-        update_tri_layer(_MOVEMENT, _CODE, _ADJUST);
       }
       return false;
       break;
     case NUMPAD:
       if (record->event.pressed) {
         layer_on(_NUMPAD);
-        update_tri_layer(_NUMPAD, _CODE, _ADJUST);
       } else {
         layer_off(_NUMPAD);
-        update_tri_layer(_NUMPAD, _CODE, _ADJUST);
       }
       return false;
       break;
