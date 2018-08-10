@@ -45,6 +45,12 @@ enum custom_keycodes {
 #define KC_CLAB LSFT(KC_COMM)
 #define KC_CRAB LSFT(KC_DOT)
 
+#define KC_CTOG BL_TOGG
+#define KC_CINC BL_INC
+#define KC_CDEC BL_DEC
+#define KC_CSTE BL_STEP
+#define KC_CBRT BL_BRTG
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_kc(
@@ -97,12 +103,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_BACKLIGHT] = LAYOUT_kc(
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
-     /* TAB , Q  , W  , E  , R  , T  ,    BL_TOGG,BL_INC,BL_DEC,O,P,BSPC, */
-     TAB , Q  , W  , E  , R  , T  ,      Y  , U  , I  , O  , P  ,BSPC,
+     TAB , Q  , W  , E  , R  , T  ,     CTOG,CINC,CDEC, O  , P  ,BSPC,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-  //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     ESC , A  , S  , D  , F  , G  ,      H  , J  , K  , L  ,SCLN,QUOT,
-     /* ESC , A  , S  , D  , F  , G  ,    BL_STEP,BL_BRTG,K,L ,SCLN,QUOT, */
+     ESC , A  , S  , D  , F  , G  ,     CSTE,CBRT, K  , L  ,SCLN,QUOT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      N  , M  ,COMM,DOT ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
