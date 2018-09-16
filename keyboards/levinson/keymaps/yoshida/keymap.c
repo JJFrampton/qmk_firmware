@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,     HASH,DLR ,CLSQ,CRSQ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M1 , M2 , M3 ,     PERC,CIRC,CLAB,CRAB,SFTU,ENT
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,     PERC,CIRC,CLAB,CRAB,SFTU,ENT
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT,BTN2,WH_L,WH_U,WH_D,WH_R,     HOME,PGDN,PGUP,END ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M1 , M2 , M3 ,     SPC , M4 , M5 ,SFTD,SFTU,ENT
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,     SPC , M4 , M5 ,SFTD,SFTU,ENT
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      1  , 2  , 3  ,ENT ,BSLS,BSLS,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M1 , M2 , M3 ,      0  , 0  ,DOT ,ENT ,EQL ,EQL
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,      0  , 0  ,DOT ,ENT ,EQL ,EQL
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      N  , M  ,COMM,DOT ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M1 , M2 , M3 ,     SPC , M4 , M5 ,SFTD,SFTU,ENT
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,     SPC , M4 , M5 ,SFTD,SFTU,ENT
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   )
 };
