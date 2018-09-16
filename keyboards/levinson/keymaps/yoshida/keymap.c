@@ -45,6 +45,8 @@ enum custom_keycodes {
 #define KC_CLAB LSFT(KC_COMM)
 #define KC_CRAB LSFT(KC_DOT)
 
+#define KC_UNSC LSFT(KC_MINS)
+
 #define KC_CTOG BL_TOGG
 #define KC_CINC BL_INC
 #define KC_CDEC BL_DEC
@@ -97,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,     EQL , 1  , 2  , 3  ,EQL ,BSLS,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M2 , M3 , M1 ,     SPC , 0  ,COMM,DOT ,ENT ,ENT
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,     UNSC, 0  ,COMM,DOT ,ENT ,ENT
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
