@@ -53,6 +53,8 @@ enum custom_keycodes {
 #define KC_CSTE BL_STEP
 #define KC_CBRT BL_BRTG
 
+#define KC_M1SP LT(KC_M2, KC_SPC)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_kc(
@@ -63,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      N  , M  ,COMM,DOT ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M2 , M3 , M1 ,     SPC , M4 , M5 ,SFTD,SFTU,ENT
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,     M1SP, M4 , M5 ,SFTD,SFTU,ENT
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
@@ -87,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT,BTN2,WH_L,WH_U,WH_D,WH_R,     HOME,PGDN,PGUP,END ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     LCTL,LALT,LGUI, M2 , M3 , M1 ,     SPC , M4 , M5 ,SFTD,SFTU,ENT
+     LCTL,LALT,LGUI, M2 , M3 , M1 ,     M1SP, M4 , M5 ,SFTD,SFTU,ENT
   //`----+----+----+----+----+----'    `----+----+----+----+----+----'
   ),
 
