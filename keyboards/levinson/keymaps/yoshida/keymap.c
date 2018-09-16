@@ -18,6 +18,49 @@ enum custom_keycodes {
   BACKLIGHT,
 };
 
+enum macros {
+  BKSP_DEL = 12,
+  email = 13,
+};
+
+// Macro Definitions
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  switch(id) {
+
+    // for basic strings
+    case email: {
+        if (record->event.pressed) {
+            SEND_STRING("josephjamesframpton@gmail.com"); // REPLACE with what you want your macro to be
+            return false;
+        }
+    }
+
+    /* // for more complex macros (want to add modifiers, etc.) */
+    /* case bksp_del: { */
+    /*   if (recond->event.pressed) { */
+    /*     return MACRO( */
+    /*       // INSERT CODE HERE for your macro. See https://docs.qmk.fm/macros.html */
+    /*     ); */
+    /*   } */
+    /* } */
+    case BKSP_DEL: {
+      uint8_t kc = KC_BSPC;
+			if (keyboard_report->mods & MOD_BIT(KC_LSFT)) { 
+		    kc = KC_DEL;
+			}
+		  if (record->event.pressed) {
+		    register_code(kc);
+      } else {
+		    unregister_code(kc);
+      }
+		}
+
+    //
+  }
+  return MACRO_NONE;
+};
+
 #define KC_ KC_TRNS
 #define _______ KC_TRNS
 
@@ -54,12 +97,13 @@ enum custom_keycodes {
 #define KC_CBRT BL_BRTG
 
 #define KC_M1SP LT(KC_M2, KC_SPC)
+#define KC_BKSP_DEL BKSP_DEL
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_kc(
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
-     TAB , Q  , W  , E  , R  , T  ,      Y  , U  , I  , O  , P  ,BSPC,
+     TAB , Q  , W  , E  , R  , T  ,      Y  , U  , I  , O  , P  ,BKSP_DEL,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      ESC , A  , S  , D  , F  , G  ,      H  , J  , K  , L  ,SCLN,QUOT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
