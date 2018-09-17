@@ -27,23 +27,6 @@ enum macros {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   switch(id) {
-
-    // for basic strings
-    case email: {
-        if (record->event.pressed) {
-            SEND_STRING("josephjamesframpton@gmail.com"); // REPLACE with what you want your macro to be
-            return false;
-        }
-    }
-
-    /* // for more complex macros (want to add modifiers, etc.) */
-    /* case bksp_del: { */
-    /*   if (recond->event.pressed) { */
-    /*     return MACRO( */
-    /*       // INSERT CODE HERE for your macro. See https://docs.qmk.fm/macros.html */
-    /*     ); */
-    /*   } */
-    /* } */
     case BKSP_DEL: {
       uint8_t kc = KC_BSPC;
 			if (keyboard_report->mods & MOD_BIT(KC_LSFT)) { 
@@ -55,8 +38,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 		    unregister_code(kc);
       }
 		}
-
-    //
   }
   return MACRO_NONE;
 };
@@ -97,7 +78,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 #define KC_CBRT BL_BRTG
 
 #define KC_M1SP LT(KC_M2, KC_SPC)
-#define KC_BKSP_DEL BKSP_DEL
+#define KC_BKSP_DEL M(BKSP_DEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
