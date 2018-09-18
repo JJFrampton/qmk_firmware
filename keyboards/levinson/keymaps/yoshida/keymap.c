@@ -40,9 +40,27 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         return false;
       }
 		}
-    case EMAIL: {
+    case GMAIL: {
         if (record->event.pressed) {
-            SEND_STRING("josephjamesframpton@gmail.com"); // REPLACE with what you want your macro to be
+            SEND_STRING("josephjamesframpton@gmail.com"); 
+            return false;
+        }
+    }
+    case HGMAIL: {
+        if (record->event.pressed) {
+            SEND_STRING("joseph.frampton@hiregroundsoftware.com"); 
+            return false;
+        }
+    }
+    case QCN: {
+        if (record->event.pressed) {
+            SEND_STRING("qcnowvmp27"); 
+            return false;
+        }
+    }
+    case QCN2: {
+        if (record->event.pressed) {
+            SEND_STRING("qcnowvmp27@&"); 
             return false;
         }
     }
@@ -87,6 +105,8 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 /* layer on hold, space on tap */
 #define KC_M1SP LT(KC_M2, KC_SPC)
+/* possible? */
+#define KC_SYTX LT(KC_M1, KC_LCTRL(KC_B))
 /* macros */
 #define KC_BKSP_DEL M(BKSP_DEL)
 #define KC_EMAIL M(EMAIL)
@@ -145,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
      TAB , Q  , W  , E  , R  , T  ,     CTOG,CINC,CDEC, O  , P  ,BSPC,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     ESC , A  , S  , D  , F  , G  ,     CSTE,CBRT,EMAIL, L  ,SCLN,QUOT,
+     ESC , A  , S  , D  , F  , G  ,     CSTE,CBRT,GMAIL,HGMAIL,SCLN,QUOT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      N  , M  ,COMM,DOT ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
