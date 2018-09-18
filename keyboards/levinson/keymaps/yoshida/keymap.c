@@ -18,6 +18,38 @@ enum custom_keycodes {
   BACKLIGHT,
 };
 
+enum macros {
+  BKSP_DEL = 12,
+  EMAIL = 13,
+};
+
+// Macro Definitions
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  switch(id) {
+    case BKSP_DEL: {
+      uint8_t kc = KC_BSPC;
+			if (keyboard_report->mods & MOD_BIT(KC_LSFT)) { 
+		    kc = KC_DEL;
+			}
+		  if (record->event.pressed) {
+		    register_code(kc);
+        return false;
+      } else {
+		    unregister_code(kc);
+        return false;
+      }
+		}
+    case EMAIL: {
+        if (record->event.pressed) {
+            SEND_STRING("josephjamesframpton@gmail.com"); // REPLACE with what you want your macro to be
+            return false;
+        }
+    }
+  }
+  return MACRO_NONE;
+};
+
 #define KC_ KC_TRNS
 #define _______ KC_TRNS
 
@@ -53,13 +85,17 @@ enum custom_keycodes {
 #define KC_CSTE BL_STEP
 #define KC_CBRT BL_BRTG
 
+/* layer on hold, space on tap */
 #define KC_M1SP LT(KC_M2, KC_SPC)
+/* macros */
+#define KC_BKSP_DEL M(BKSP_DEL)
+#define KC_EMAIL M(EMAIL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT_kc(
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
-     TAB , Q  , W  , E  , R  , T  ,      Y  , U  , I  , O  , P  ,BSPC,
+     TAB , Q  , W  , E  , R  , T  ,      Y  , U  , I  , O  , P  ,BKSP_DEL,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      ESC , A  , S  , D  , F  , G  ,      H  , J  , K  , L  ,SCLN,QUOT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
@@ -109,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
      TAB , Q  , W  , E  , R  , T  ,     CTOG,CINC,CDEC, O  , P  ,BSPC,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
-     ESC , A  , S  , D  , F  , G  ,     CSTE,CBRT, K  , L  ,SCLN,QUOT,
+     ESC , A  , S  , D  , F  , G  ,     CSTE,CBRT,EMAIL, L  ,SCLN,QUOT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
      LSFT, Z  , X  , C  , V  , B  ,      N  , M  ,COMM,DOT ,SLSH,RSFT,
   //|----+----+----+----+----+----|    |----+----+----+----+----+----|
