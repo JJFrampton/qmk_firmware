@@ -137,10 +137,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
      KC_TILD, KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 , KC_EXLM, KC_AT  , KC_CLCB, KC_CRCB, KC_SCLN, KC_BSLS,
 // |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
-     KC_LSFT, KC_F7  , KC_X   ,  KC_C  ,  KC_V  ,  KC_B  , KC_HASH, KC_DLR , KC_CLSQ, KC_CRSQ, KC_SLSH, KC_RSFT,
+     KC_LSFT, KC_F7  , KC_X   ,  KC_C  , MU_TOG , MU_MOD , KC_HASH, KC_DLR , KC_CLSQ, KC_CRSQ, KC_SLSH, KC_RSFT,
 // |--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------|
      KC_LCTL, KC_LALT, KC_LGUI,  KC_M2 ,  KC_M3 ,  KC_M1 , KC_PERC, KC_CIRC, KC_CLAB, KC_CRAB, KC_SFTU, KC_ENT
 // .-----------------------------------------------------------------------------------------------------------.
+// MU = music
+// LCTRL = record (when in music mode)
+// LALT = stop (when in music mode)
  ),
 [_MOVEMENT] = LAYOUT_planck_grid(
 //,----+----+----+----+----+----.    ,----+----+----+----+----+----.
